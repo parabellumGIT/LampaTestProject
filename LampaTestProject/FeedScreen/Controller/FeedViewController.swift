@@ -9,22 +9,40 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-    enum CellIds:String{
+    private enum CellIds:String{
         case TopNewsCell
         case NewsCell
+        case NewsWithoutImageCell
     }
-    
+    var news:[NewsFeedViewModelItem] = []
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let webService = WebService.shared()
+        webService.getNews { (items, error) in
+            if let newsItems = items{
+                let newsFeedVM = NewsFeedViewModel(news: newsItems)
+                self.news = newsFeedVM.items
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.tableView.reloadData()
+                })
+                
+            }else{
+                print(error!)
+            }
+        }
+        
+        
         
     }
-
- 
-
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
+    
+    
 }
 
 extension FeedViewController:UITableViewDelegate{
@@ -33,18 +51,29 @@ extension FeedViewController:UITableViewDelegate{
 
 extension FeedViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        print(news.count)
+        return news.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.TopNewsCell.rawValue, for: indexPath) as! TopNewsTableViewCell
-            cell.imageURLs.append(URL(string: "https://www.google.com/search?biw=1264&bih=908&tbm=isch&q=funny+cats&sa=X&ved=0ahUKEwixsquPlbHXAhVOKuwKHS_EB3AQhyYIJQ#imgrc=kNxxpnFk0aZAuM")!)
-            return cell
-        }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.NewsCell.rawValue, for: indexPath) as! NewsTableViewCell
-            return cell
+        let item = news[indexPath.row]
+        switch item.type {
+        case .topItem:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.TopNewsCell.rawValue , for: indexPath) as? TopNewsTableViewCell{
+                cell.item = item
+                return cell
+            }
+        case .withImageItem:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.NewsCell.rawValue , for: indexPath) as? NewsTableViewCell{
+                cell.item = item
+                return cell
+            }
+        case .noImageItem:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.NewsWithoutImageCell.rawValue, for: indexPath) as? NewsWithoutImageTableViewCell{
+                cell.item = item
+                return cell
+            }
+            
         }
-        
+        return UITableViewCell()
     }
-    
 }

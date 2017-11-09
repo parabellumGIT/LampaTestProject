@@ -10,6 +10,17 @@ import UIKit
 
 class NewsWithoutImageTableViewCell: UITableViewCell {
     
+    var item:NewsFeedViewModelItem?{
+        didSet{
+            guard let item = item as? NoImageViewModelItem else{
+                return
+            }
+            self.agoLabel.text = item.ago
+            self.titleLabel.text = item.titleName
+            self.sourceLabel.text = item.source
+            
+        }
+    }
     @IBOutlet weak var agoLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -17,11 +28,7 @@ class NewsWithoutImageTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
     }
-    func configure(with newsItem:NewsItem){
-        self.sourceLabel.text = newsItem.link.absoluteString
-        self.titleLabel.text = newsItem.name
-        self.agoLabel.text = newsItem.updatedAt
-    }
+   
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         

@@ -37,7 +37,8 @@ class NewsFeedViewModel: NSObject {
         let newsWithImage = news.filter{($0.cover != nil && $0.top == false)}
         print("WithImage - \(newsWithImage.count)")
         for newsItem in newsWithImage{
-            let item = WithImageViewModelItem(titleName: newsItem.name, source: getItemSource(url:newsItem.link), ago: formatDate(dateString: newsItem.createdAt), cover: newsItem.cover!)
+            print(newsItem.date)
+            let item = WithImageViewModelItem(titleName: newsItem.name, source: getItemSource(url:newsItem.link), ago: formatDate(dateString: newsItem.createdAt), cover: newsItem.cover!,date:newsItem.date)
             items.append(item)
         }
         
@@ -46,9 +47,17 @@ class NewsFeedViewModel: NSObject {
         print("WithoutImage - \(newsWithoutImage.count)")
         for newsItem in newsWithoutImage{
             
-            let item = NoImageViewModelItem(titleName: newsItem.name, source: getItemSource(url: newsItem.link), ago: formatDate(dateString: newsItem.createdAt))
+            let item = NoImageViewModelItem(titleName: newsItem.name, source: getItemSource(url: newsItem.link), ago: formatDate(dateString: newsItem.createdAt),date:newsItem.date)
             items.append(item)
             
+            
+            
+        }
+        items = items.sorted(by: { (item1, item2) -> Bool in
+            return item1.date > item2.date
+        })
+        for item in items{
+            print(item.date)
         }
         print("ALL ITEMS - \(items.count)")
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class FeedViewController: UIViewController {
     private enum CellIds:String{
@@ -14,18 +15,37 @@ class FeedViewController: UIViewController {
         case NewsCell
         case NewsWithoutImageCell
     }
+    
+    //MARK: Properties
     var news:[NewsFeedViewModelItem] = []
     
+    //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
     
+    
+    //MARK: - Lyfecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
+        
+        getNews()
+        
+        
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+    }
+    
+    
+    fileprivate func getNews() {
         let webService = WebService.shared()
         webService.getNews { (items, error) in
             if let newsItems = items{
                 let newsFeedVM = NewsFeedViewModel(news: newsItems)
                 self.news = newsFeedVM.items
                 DispatchQueue.main.async(execute: { () -> Void in
+                    MBProgressHUD.hide(for: self.view, animated: true)
                     self.tableView.reloadData()
                 })
                 
@@ -33,16 +53,7 @@ class FeedViewController: UIViewController {
                 print(error!)
             }
         }
-        
-        
-        
     }
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
-    
-    
 }
 
 extension FeedViewController:UITableViewDelegate{

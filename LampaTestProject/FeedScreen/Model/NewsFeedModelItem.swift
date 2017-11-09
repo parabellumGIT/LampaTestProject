@@ -9,6 +9,7 @@
 import Foundation
 protocol NewsFeedViewModelItem{
     var type: NewsFeedViewModelItemType {get}
+    var date: Date {get set}
 }
 
 enum NewsFeedViewModelItemType{
@@ -19,6 +20,8 @@ enum NewsFeedViewModelItemType{
 
 
 class TopNewsViewModelImageItem: NewsFeedViewModelItem{
+    var date: Date = Date()
+    
     var type: NewsFeedViewModelItemType{
         return .topItem
     }
@@ -26,11 +29,11 @@ class TopNewsViewModelImageItem: NewsFeedViewModelItem{
     init(with topNews:[NewsItem]){
         self.topNews = topNews
     }
-    
-    
 }
 
 class WithImageViewModelItem:NewsFeedViewModelItem{
+    var date: Date
+    
     var type:NewsFeedViewModelItemType{
         return .withImageItem
     }
@@ -38,24 +41,28 @@ class WithImageViewModelItem:NewsFeedViewModelItem{
     var source:String
     var ago:String
     var cover:URL
-    init(titleName:String,source:String,ago:String,cover:URL){
+    init(titleName:String,source:String,ago:String,cover:URL,date:Date){
         self.titleName = titleName
         self.source = source
         self.ago = ago
         self.cover = cover
+        self.date = date
     }
 }
 
 class NoImageViewModelItem:NewsFeedViewModelItem{
+    var date: Date
+    
     var type:NewsFeedViewModelItemType{
         return .noImageItem
     }
     var titleName: String
     var source:String
     var ago:String
-    init(titleName:String,source:String,ago:String){
+    init(titleName:String,source:String,ago:String,date:Date){
         self.titleName = titleName
         self.source = source
         self.ago = ago
+        self.date = date
     }
 }

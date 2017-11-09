@@ -7,9 +7,24 @@
 //
 
 import UIKit
+import ImageSlideshow
+import SDWebImage
 
 class TopNewsTableViewCell: UITableViewCell {
-
+    var imageURLs:[URL] = []{
+        didSet{
+            let imageSource = imageURLs.map { SDWebImageSource(urlString:$0.absoluteString)!}
+            self.slider.pageControl.numberOfPages = imageURLs.count
+            self.slider.setImageInputs(imageSource)
+        }
+    }
+    
+    @IBOutlet weak var agoLabel: UILabel!
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var sourceLabel: UILabel!
+    @IBOutlet weak var slider: ImageSlideshow!
+    
+    //MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

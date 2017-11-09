@@ -1,0 +1,6 @@
+framework module Pods_LampaTestProject {
+  umbrella header "Pods-LampaTestProject-umbrella.h"
+
+  export *
+  module * { export * }
+}

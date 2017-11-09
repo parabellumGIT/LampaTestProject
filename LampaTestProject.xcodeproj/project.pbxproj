@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		5CE11EBE1FB4322200A1C25C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE11EBD1FB4322200A1C25C /* AppDelegate.swift */; };
-		5CE11EC01FB4322200A1C25C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE11EBF1FB4322200A1C25C /* ViewController.swift */; };
 		5CE11EC31FB4322200A1C25C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CE11EC11FB4322200A1C25C /* Main.storyboard */; };
 		5CE11EC51FB4322200A1C25C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CE11EC41FB4322200A1C25C /* Assets.xcassets */; };
 		5CE11EC81FB4322200A1C25C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CE11EC61FB4322200A1C25C /* LaunchScreen.storyboard */; };
+		5CE11ED01FB4349900A1C25C /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE11ECF1FB4349900A1C25C /* FeedViewController.swift */; };
+		A6899E0E9056C8D195A3261C /* Pods_LampaTestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C33E77D322A92E1E399544 /* Pods_LampaTestProject.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0236F973653EED41126C18D7 /* Pods-LampaTestProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LampaTestProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-LampaTestProject/Pods-LampaTestProject.release.xcconfig"; sourceTree = "<group>"; };
+		34C33E77D322A92E1E399544 /* Pods_LampaTestProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LampaTestProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CE11EBA1FB4322100A1C25C /* LampaTestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LampaTestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CE11EBD1FB4322200A1C25C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5CE11EBF1FB4322200A1C25C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5CE11EC21FB4322200A1C25C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5CE11EC41FB4322200A1C25C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CE11EC71FB4322200A1C25C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CE11EC91FB4322200A1C25C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CE11ECF1FB4349900A1C25C /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		E15FCF419E6863209EA32C68 /* Pods-LampaTestProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LampaTestProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LampaTestProject/Pods-LampaTestProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6899E0E9056C8D195A3261C /* Pods_LampaTestProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		169FA71ECD8D32ACD086D0D5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E15FCF419E6863209EA32C68 /* Pods-LampaTestProject.debug.xcconfig */,
+				0236F973653EED41126C18D7 /* Pods-LampaTestProject.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		29551C04ABB9CCCD9D96007B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				34C33E77D322A92E1E399544 /* Pods_LampaTestProject.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5CE11EB11FB4322100A1C25C = {
 			isa = PBXGroup;
 			children = (
 				5CE11EBC1FB4322100A1C25C /* LampaTestProject */,
 				5CE11EBB1FB4322100A1C25C /* Products */,
+				169FA71ECD8D32ACD086D0D5 /* Pods */,
+				29551C04ABB9CCCD9D96007B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,7 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				5CE11EBD1FB4322200A1C25C /* AppDelegate.swift */,
-				5CE11EBF1FB4322200A1C25C /* ViewController.swift */,
+				5CE11ECF1FB4349900A1C25C /* FeedViewController.swift */,
 				5CE11EC11FB4322200A1C25C /* Main.storyboard */,
 				5CE11EC41FB4322200A1C25C /* Assets.xcassets */,
 				5CE11EC61FB4322200A1C25C /* LaunchScreen.storyboard */,
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5CE11ECC1FB4322200A1C25C /* Build configuration list for PBXNativeTarget "LampaTestProject" */;
 			buildPhases = (
+				24EC8BFBC768F057ACFC272E /* [CP] Check Pods Manifest.lock */,
 				5CE11EB61FB4322100A1C25C /* Sources */,
 				5CE11EB71FB4322100A1C25C /* Frameworks */,
 				5CE11EB81FB4322100A1C25C /* Resources */,
+				F68E9E19F225F73F43984192 /* [CP] Embed Pods Frameworks */,
+				BCB89194F4BC949B6A884AF5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,12 +158,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		24EC8BFBC768F057ACFC272E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LampaTestProject-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BCB89194F4BC949B6A884AF5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LampaTestProject/Pods-LampaTestProject-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F68E9E19F225F73F43984192 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LampaTestProject/Pods-LampaTestProject-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AMScrollingNavbar/AMScrollingNavbar.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMScrollingNavbar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LampaTestProject/Pods-LampaTestProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5CE11EB61FB4322100A1C25C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CE11EC01FB4322200A1C25C /* ViewController.swift in Sources */,
+				5CE11ED01FB4349900A1C25C /* FeedViewController.swift in Sources */,
 				5CE11EBE1FB4322200A1C25C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +359,7 @@
 		};
 		5CE11ECD1FB4322200A1C25C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E15FCF419E6863209EA32C68 /* Pods-LampaTestProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +375,7 @@
 		};
 		5CE11ECE1FB4322200A1C25C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0236F973653EED41126C18D7 /* Pods-LampaTestProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

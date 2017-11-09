@@ -9,6 +9,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Geometria.otf">
+            <string>Geometria</string>
+        </array>
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Feed View Controller-->
         <scene sceneID="OaL-EY-JUL">
@@ -22,28 +30,78 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TopNewsCell" rowHeight="200" id="ZSt-2z-qNx">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="200"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TopNewsCell" rowHeight="220" id="ZSt-2z-qNx" customClass="TopNewsTableViewCell" customModule="LampaTestProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZSt-2z-qNx" id="GHH-tR-AQ3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9OF-2d-oe4" userLabel="BaseView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="197.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="217.5"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="div-0Z-hTZ" customClass="ImageSlideshow" customModule="ImageSlideshow">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="217.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </view>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="aGP-XU-fcm">
+                                                            <rect key="frame" x="10" y="175.5" width="199.5" height="12"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emercedesbenz.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAG-G3-mHn">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="119" height="12"/>
+                                                                    <fontDescription key="fontDescription" name="Geometria" family="Geometria" pointSize="12"/>
+                                                                    <color key="textColor" red="0.0" green="0.67843137254901964" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-sz-C8R">
+                                                                    <rect key="frame" x="122" y="0.0" width="6" height="12"/>
+                                                                    <fontDescription key="fontDescription" name="Geometria" family="Geometria" pointSize="12"/>
+                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 hours ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKB-Vq-b3S">
+                                                                    <rect key="frame" x="131" y="0.0" width="68.5" height="12"/>
+                                                                    <fontDescription key="fontDescription" name="Geometria" family="Geometria" pointSize="12"/>
+                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mercedes-Benz and Laureus broadening their worldwide involvement" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzQ-eQ-ZM0">
+                                                            <rect key="frame" x="9" y="87.5" width="356" height="74"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="21"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="div-0Z-hTZ" secondAttribute="bottom" id="6bI-f8-O5o"/>
+                                                        <constraint firstAttribute="trailing" secondItem="div-0Z-hTZ" secondAttribute="trailing" id="GU5-ZG-MFN"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aGP-XU-fcm" secondAttribute="trailing" constant="10" id="RIX-Wh-4qE"/>
+                                                        <constraint firstItem="div-0Z-hTZ" firstAttribute="leading" secondItem="9OF-2d-oe4" secondAttribute="leading" id="TBe-OQ-yTz"/>
+                                                        <constraint firstItem="aGP-XU-fcm" firstAttribute="leading" secondItem="9OF-2d-oe4" secondAttribute="leading" constant="10" id="fva-5b-OhI"/>
+                                                        <constraint firstItem="div-0Z-hTZ" firstAttribute="top" secondItem="9OF-2d-oe4" secondAttribute="top" id="liP-4b-uYh"/>
+                                                        <constraint firstAttribute="bottom" secondItem="aGP-XU-fcm" secondAttribute="bottom" constant="30" id="o4B-eI-67O"/>
+                                                        <constraint firstItem="aGP-XU-fcm" firstAttribute="top" secondItem="zzQ-eQ-ZM0" secondAttribute="bottom" constant="14" id="wzv-SQ-L0f"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="zzQ-eQ-ZM0" firstAttribute="leading" secondItem="GHH-tR-AQ3" secondAttribute="leading" constant="9" id="76j-v1-fmY"/>
                                                 <constraint firstItem="9OF-2d-oe4" firstAttribute="top" secondItem="GHH-tR-AQ3" secondAttribute="top" id="H0o-B5-sJe"/>
                                                 <constraint firstAttribute="bottom" secondItem="9OF-2d-oe4" secondAttribute="bottom" constant="2" id="Pe3-7i-4RX"/>
                                                 <constraint firstItem="9OF-2d-oe4" firstAttribute="leading" secondItem="GHH-tR-AQ3" secondAttribute="leading" id="SO1-E3-GM1"/>
+                                                <constraint firstAttribute="trailing" secondItem="zzQ-eQ-ZM0" secondAttribute="trailing" constant="10" id="sS4-zM-C1k"/>
                                                 <constraint firstAttribute="trailing" secondItem="9OF-2d-oe4" secondAttribute="trailing" id="xFZ-co-kCX"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="slider" destination="div-0Z-hTZ" id="V0o-Ac-GW2"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsCell" rowHeight="250" id="9lw-m4-9M1">
-                                        <rect key="frame" x="0.0" y="228" width="375" height="250"/>
+                                        <rect key="frame" x="0.0" y="248" width="375" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9lw-m4-9M1" id="klG-Bj-1Yc">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="249.5"/>

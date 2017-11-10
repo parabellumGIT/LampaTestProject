@@ -147,7 +147,9 @@ class FeedViewController: UIViewController{
 }
 
 extension FeedViewController:UITableViewDelegate{
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
 }
 
 extension FeedViewController:UITableViewDataSource{

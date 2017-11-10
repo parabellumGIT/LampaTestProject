@@ -28,7 +28,8 @@ class NewsFeedViewModel: NSObject {
         //MARK: - TOP NEWS
         let topNews = news.filter{$0.top == true}
         print("TOP - \(topNews.count)")
-        if topNews.count != 0{ //should be ->>>> if topNews.count != 0{
+        if topNews.count != 0{ //FOR TEST Change to -> if topNews.count == 0{
+            //FOR TESTING PURPOSES uncomment this and comment next one ->>>>
             //let topItem = TopNewsViewModelImageItem(with: news.filter{$0.cover != nil})
             let topItem = TopNewsViewModelImageItem(with: topNews)
         items.append(topItem)

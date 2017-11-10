@@ -63,18 +63,7 @@ class WebService:NSObject{
         return task
     }
     //MARK: Helpers
-    private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: Data?, _ error: NSError?) -> Void) {
-        
-        var newsJSON:Data!
-        do {
-            newsJSON = try JSONSerialization.jsonObject(with: data, options: []) as! Data
-        } catch {
-            let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data: '\(data)'"]
-            completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
-        }
-        
-        completionHandlerForConvertData(newsJSON, nil)
-    }
+   
     
     private func URLFromParameters(_ parameters: [String:String]) -> URL {
         var components = URLComponents()

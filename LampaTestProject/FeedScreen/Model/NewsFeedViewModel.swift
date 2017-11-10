@@ -11,7 +11,7 @@ func getItemSource(url:URL)->String{
     return url.host!
 }
 func formatDate(dateString:String) -> String{
-   // 2017-11-09T13:48:06.718Z
+   
     let dateFormatter = DateFormatter()
     let tempLocale = dateFormatter.locale // save locale temporarily
     dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
@@ -28,8 +28,9 @@ class NewsFeedViewModel: NSObject {
         //MARK: - TOP NEWS
         let topNews = news.filter{$0.top == true}
         print("TOP - \(topNews.count)")
-        if topNews.count != 0{
-            let topItem = TopNewsViewModelImageItem(with: topNews)
+        if topNews.count == 0{ //should be ->>>> if topNews.count != 0{
+            let topItem = TopNewsViewModelImageItem(with: news.filter{$0.cover != nil})
+            //let topItem = TopNewsViewModelImageItem(with: topNews)
         items.append(topItem)
         }
         

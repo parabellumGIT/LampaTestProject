@@ -10,6 +10,7 @@ import Foundation
 protocol NewsFeedViewModelItem{
     var type: NewsFeedViewModelItemType {get}
     var date: Date {get set}
+    var titleName: String {get set}
 }
 
 enum NewsFeedViewModelItemType{
@@ -20,11 +21,11 @@ enum NewsFeedViewModelItemType{
 
 
 class TopNewsViewModelImageItem: NewsFeedViewModelItem{
-    var date: Date = Date()
-    
+    var titleName: String = ""
     var type: NewsFeedViewModelItemType{
         return .topItem
     }
+    var date: Date = Date()
     var topNews:[NewsItem]
     init(with topNews:[NewsItem]){
         self.topNews = topNews

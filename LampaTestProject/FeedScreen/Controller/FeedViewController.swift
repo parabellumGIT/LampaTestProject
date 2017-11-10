@@ -50,8 +50,8 @@ class FeedViewController: UIViewController{
     @IBAction func searchButtonTapped(_ sender: UIBarButtonItem) {
         navController.stopFollowingScrollView(showingNavbar: true)
         navController.showNavbar()
-        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
-        tableView.scrollRectToVisible(rect, animated: true)
+     
+        tableView.setContentOffset(CGPoint(x:0,y: -tableView.contentInset.top), animated: true)
         tableView.tableHeaderView = searchController.searchBar
         
         

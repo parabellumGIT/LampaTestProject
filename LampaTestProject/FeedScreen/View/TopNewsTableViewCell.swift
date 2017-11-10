@@ -49,7 +49,8 @@ class TopNewsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         slider.activityIndicator = DefaultActivityIndicator(style: .gray, color: .red)
         slider.contentScaleMode = .scaleAspectFill
-        slider.slideshowInterval = 8
+        slider.slideshowInterval = 5
+        slider.pageControl.currentPageIndicatorTintColor = UIColor(red: 0, green: 173, blue: 239, alpha: 1)
         slider.currentPageChanged = {index in
             self.label.text = self.topNews[index].name
             self.sourceLabel.text = getItemSource(url:self.topNews[index].link)
@@ -60,7 +61,14 @@ class TopNewsTableViewCell: UITableViewCell {
         
         // Initialization code
     }
-
+    override func prepareForReuse() {
+        slider.pageControl.currentPage = 0
+        slider.setCurrentPage(0, animated: false)
+        self.label.text = topNews[0].name
+        self.sourceLabel.text = getItemSource(url:topNews[0].link)
+        self.agoLabel.text = formatDate(dateString: self.topNews[0].updatedAt)
+        
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

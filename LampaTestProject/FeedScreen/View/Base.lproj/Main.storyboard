@@ -290,18 +290,58 @@
                                     <outlet property="delegate" destination="4pX-vM-yXP" id="s8p-7p-Vaa"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OHE-fk-cM2" customClass="UIViewX" customModule="LampaTestProject" customModuleProvider="target">
+                                <rect key="frame" x="-180" y="0.0" width="180" height="554"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some fancy menu here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0oi-V6-IdI">
+                                        <rect key="frame" x="2" y="271" width="176" height="13"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="9YM-uZ-I80"/>
+                                    <constraint firstItem="0oi-V6-IdI" firstAttribute="centerX" secondItem="OHE-fk-cM2" secondAttribute="centerX" id="JHz-WE-W8d"/>
+                                    <constraint firstAttribute="trailing" secondItem="0oi-V6-IdI" secondAttribute="trailing" constant="2" id="dTy-ca-hf0"/>
+                                    <constraint firstItem="0oi-V6-IdI" firstAttribute="centerY" secondItem="OHE-fk-cM2" secondAttribute="centerY" id="qJ2-qc-fez"/>
+                                    <constraint firstItem="0oi-V6-IdI" firstAttribute="leading" secondItem="OHE-fk-cM2" secondAttribute="leading" constant="2" id="vhg-29-K8e"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.69999999999999996"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Io-mf-AU7" firstAttribute="leading" secondItem="MIj-u4-hKo" secondAttribute="leading" id="00p-wK-KX3"/>
                             <constraint firstItem="6Io-mf-AU7" firstAttribute="top" secondItem="MIj-u4-hKo" secondAttribute="top" id="CS7-IE-oka"/>
+                            <constraint firstItem="OHE-fk-cM2" firstAttribute="bottom" secondItem="MIj-u4-hKo" secondAttribute="bottom" id="CTd-wP-Xb5"/>
+                            <constraint firstItem="OHE-fk-cM2" firstAttribute="top" secondItem="MIj-u4-hKo" secondAttribute="top" id="GT5-jd-x21"/>
+                            <constraint firstItem="OHE-fk-cM2" firstAttribute="leading" secondItem="MIj-u4-hKo" secondAttribute="leading" constant="-180" id="ULE-FM-ZRd"/>
                             <constraint firstItem="6Io-mf-AU7" firstAttribute="bottom" secondItem="MIj-u4-hKo" secondAttribute="bottom" id="VGx-Gj-3wC"/>
                             <constraint firstItem="6Io-mf-AU7" firstAttribute="trailing" secondItem="MIj-u4-hKo" secondAttribute="trailing" id="sbo-CZ-BYk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MIj-u4-hKo"/>
                     </view>
                     <navigationItem key="navigationItem" title="News" id="okS-n1-EZb">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="Burgermenu" id="FRK-gR-a9P"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="Burgermenu" id="FRK-gR-a9P">
+                            <connections>
+                                <action selector="menuOpen:" destination="4pX-vM-yXP" id="arf-vn-IcR"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Search" id="FKg-CM-sim">
                             <connections>
                                 <action selector="searchButtonTapped:" destination="4pX-vM-yXP" id="7GL-ut-qdd"/>
@@ -309,6 +349,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="menuBarButton" destination="FRK-gR-a9P" id="3i6-Sx-BB7"/>
+                        <outlet property="menuLeadingConstraint" destination="ULE-FM-ZRd" id="4o5-nf-PdM"/>
                         <outlet property="searchButton" destination="FKg-CM-sim" id="cRk-Hr-QWN"/>
                         <outlet property="tableView" destination="6Io-mf-AU7" id="q9f-Mi-xqU"/>
                     </connections>

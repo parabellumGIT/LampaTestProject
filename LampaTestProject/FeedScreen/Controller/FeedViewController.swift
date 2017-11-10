@@ -18,6 +18,7 @@ class FeedViewController: UIViewController{
     }
     
     //MARK: Properties
+    private var menuShowing: Bool = false
     fileprivate weak var navController:ScrollingNavigationController!
     var searchController: UISearchController!
     var news:[NewsFeedViewModelItem] = []
@@ -34,12 +35,32 @@ class FeedViewController: UIViewController{
     //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchButton: UIBarButtonItem!
+    @IBOutlet weak var menuLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var menuBarButton: UIBarButtonItem!
+    //MARK: IBActions
     @IBAction func searchButtonTapped(_ sender: UIBarButtonItem) {
         navController.stopFollowingScrollView(showingNavbar: true)
-        tableView.tableHeaderView = searchController.searchBar
-        let rect = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.tableView.frame.height)
+        navController.showNavbar()
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
         tableView.scrollRectToVisible(rect, animated: true)
+        tableView.tableHeaderView = searchController.searchBar
         
+        
+        
+    }
+    @IBAction func menuOpen(_ sender: UIBarButtonItem) {
+        if menuShowing{
+           menuLeadingConstraint.constant = -180
+            UIView.animate(withDuration: 0.4, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }else{
+            menuLeadingConstraint.constant = 0
+            UIView.animate(withDuration: 0.4, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
+        menuShowing = !menuShowing
     }
     
     

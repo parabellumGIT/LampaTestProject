@@ -23,9 +23,18 @@ class FeedViewController: UIViewController{
     var searchController: UISearchController!
     var news:[NewsFeedViewModelItem] = []
     var filteredNews:[NewsFeedViewModelItem] = []
+    let tryAgainButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Try again", for: .normal)
+        button.addTarget(self, action: #selector(getNews), for: .touchUpInside)
+        button.isHidden = true
+        button.setTitleColor(UIColor.red, for: .normal)
+        button.sizeToFit()
+        return button
+    }()
     let errorMessageLabel: UILabel = {
         let label = UILabel()
-        label.text = "Apologies, something went wrong. Please try again later..."
+        label.text = "Apologies, something went wrong. Please check your internet connection and try again later..."
         label.textAlignment = .center
         label.numberOfLines = 0
         label.isHidden = true
@@ -50,7 +59,7 @@ class FeedViewController: UIViewController{
     }
     @IBAction func menuOpen(_ sender: UIBarButtonItem) {
         if menuShowing{
-           menuLeadingConstraint.constant = -180
+            menuLeadingConstraint.constant = -180
             UIView.animate(withDuration: 0.4, animations: {
                 self.view.layoutIfNeeded()
             })
@@ -72,16 +81,18 @@ class FeedViewController: UIViewController{
     }
     
     //MARK: - Funcs
-    fileprivate func getNews() {
+    
+    
+    @objc fileprivate func getNews() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        hideErrorScreen()
         let webService = WebService.shared()
         webService.getNews { (items, error) in
             if let _ = error{
-                DispatchQueue.main.async(execute: {
-                    self.errorMessageLabel.isHidden = false
-                    self.errorMessageLabel.frame = self.tableView.frame
-                    MBProgressHUD.hide(for: self.view, animated: true)
+                DispatchQueue.main.async(execute: {self.errorMessageLabel.isHidden = false
+                   self.showErrorScreen()
                 })
-               return
+                return
             }
             if let newsItems = items{
                 let newsFeedVM = NewsFeedViewModel(news: newsItems)
@@ -95,15 +106,24 @@ class FeedViewController: UIViewController{
             
         }
     }
-    
-    
-    fileprivate func initialSetup() {
+    private func hideErrorScreen() {
+        self.tryAgainButton.isHidden = true
+        self.errorMessageLabel.isHidden = true
+    }
+    private func showErrorScreen(){
+        self.errorMessageLabel.frame = self.tableView.frame
+        self.tryAgainButton.isHidden = false
+        self.tryAgainButton.center = CGPoint(x: self.errorMessageLabel.center.x, y: self.errorMessageLabel.center.y + 40)
+        MBProgressHUD.hide(for: self.view, animated: true)
+    }
+    private func initialSetup() {
         setupSearchController()
         navController = self.navigationController as? ScrollingNavigationController
         tableView.addSubview(self.errorMessageLabel)
+        tableView.addSubview(self.tryAgainButton)
         tableView.tableFooterView = UIView()
         tableView.contentInset = UIEdgeInsets(top: -6, left: 0, bottom: 0, right: 0)
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+       
         enableScrollNavItems()
     }
     

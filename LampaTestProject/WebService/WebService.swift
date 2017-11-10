@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Disk
 class WebService:NSObject{
     class func shared() -> WebService{
         struct Singleton{

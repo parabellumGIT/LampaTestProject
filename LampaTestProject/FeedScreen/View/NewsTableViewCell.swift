@@ -15,7 +15,7 @@ class NewsTableViewCell: UITableViewCell {
                 return
             }
             
-           self.newsImage.sd_setImage(with: item.cover, completed: nil) 
+            self.newsImage.sd_setImage(with: item.cover, completed: nil)
             self.titleLabel.text = item.titleName
             self.agoLabel.text = item.ago
             self.sourceLabel.text = item.source

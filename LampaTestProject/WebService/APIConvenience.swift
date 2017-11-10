@@ -7,6 +7,9 @@
 //
 import Disk
 extension WebService{
+    //
+    //Here we can use some "Expire date" for cache in future..
+    //
     func getNews(_ completionHandler: @escaping (_ results:[NewsItem]?, _ error: Error?) -> Void){
         let parameters = [WebService.QueryParameterKeys.Langugage:"en",
                           WebService.QueryParameterKeys.NewsCount:"10",

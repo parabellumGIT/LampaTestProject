@@ -10,19 +10,7 @@ import UIKit
 import MBProgressHUD
 import AMScrollingNavbar
 
-class FeedViewController: UIViewController,UISearchResultsUpdating {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-       
-        if let searchText = searchController.searchBar.text{
-            filteredNews = searchText.isEmpty ? news : news.filter({ (item:NewsFeedViewModelItem) -> Bool in
-              return  item.titleName.range(of: searchText, options: .caseInsensitive) != nil
-            })
-            
-            tableView.reloadData()
-        }
-    }
-    
+class FeedViewController: UIViewController{
     private enum CellIds:String{
         case TopNewsCell
         case NewsCell
@@ -32,7 +20,6 @@ class FeedViewController: UIViewController,UISearchResultsUpdating {
     //MARK: Properties
     fileprivate weak var navController:ScrollingNavigationController!
     var searchController: UISearchController!
-    
     var news:[NewsFeedViewModelItem] = []
     var filteredNews:[NewsFeedViewModelItem] = []
     let errorMessageLabel: UILabel = {
@@ -43,13 +30,11 @@ class FeedViewController: UIViewController,UISearchResultsUpdating {
         label.isHidden = true
         return label
     }()
+    
     //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchButton: UIBarButtonItem!
-    
-    
     @IBAction func searchButtonTapped(_ sender: UIBarButtonItem) {
-        
         navController.stopFollowingScrollView(showingNavbar: true)
         tableView.tableHeaderView = searchController.searchBar
         let rect = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.tableView.frame.height)
@@ -59,14 +44,13 @@ class FeedViewController: UIViewController,UISearchResultsUpdating {
     
     
     //MARK: - Lyfecycle
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        getNews()
     }
     
-    
+    //MARK: - Funcs
     fileprivate func getNews() {
         let webService = WebService.shared()
         webService.getNews { (items, error) in
@@ -90,7 +74,19 @@ class FeedViewController: UIViewController,UISearchResultsUpdating {
             
         }
     }
+    
+    
     fileprivate func initialSetup() {
+        setupSearchController()
+        navController = self.navigationController as? ScrollingNavigationController
+        tableView.addSubview(self.errorMessageLabel)
+        tableView.tableFooterView = UIView()
+        tableView.contentInset = UIEdgeInsets(top: -6, left: 0, bottom: 0, right: 0)
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        enableScrollNavItems()
+    }
+    
+    fileprivate func setupSearchController() {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -100,14 +96,8 @@ class FeedViewController: UIViewController,UISearchResultsUpdating {
         searchController.searchBar.backgroundColor = .black
         searchController.searchBar.barTintColor = .black
         searchController.hidesNavigationBarDuringPresentation = false
-        navController = self.navigationController as? ScrollingNavigationController
-        tableView.addSubview(self.errorMessageLabel)
-        tableView.tableFooterView = UIView()
-        tableView.contentInset = UIEdgeInsets(top: -6, left: 0, bottom: 0, right: 0)
-        getNews()
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-        enableScrollNavItems()
     }
+    
     fileprivate func enableScrollNavItems(){
         if tabBarController != nil {
             navController.followScrollView(tableView, delay: 60, scrollSpeedFactor: 1, followers: [tabBarController!.tabBar])
@@ -153,5 +143,15 @@ extension FeedViewController: UISearchBarDelegate{
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.enableScrollNavItems()
         self.tableView.tableHeaderView = nil
+    }
+}
+extension FeedViewController:UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text{
+            filteredNews = searchText.isEmpty ? news : news.filter({ (item:NewsFeedViewModelItem) -> Bool in
+                return  item.titleName.range(of: searchText, options: .caseInsensitive) != nil
+            })
+            tableView.reloadData()
+        }
     }
 }

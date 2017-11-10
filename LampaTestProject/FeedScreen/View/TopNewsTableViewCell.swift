@@ -50,7 +50,7 @@ class TopNewsTableViewCell: UITableViewCell {
         slider.activityIndicator = DefaultActivityIndicator(style: .gray, color: .red)
         slider.contentScaleMode = .scaleAspectFill
         slider.slideshowInterval = 5
-        slider.pageControl.currentPageIndicatorTintColor = UIColor(red: 0, green: 173, blue: 239, alpha: 1)
+        slider.pageControl.currentPageIndicatorTintColor = UIColor(red: 0/255, green: 173/255, blue: 239/255, alpha: 1)
         slider.currentPageChanged = {index in
             self.label.text = self.topNews[index].name
             self.sourceLabel.text = getItemSource(url:self.topNews[index].link)

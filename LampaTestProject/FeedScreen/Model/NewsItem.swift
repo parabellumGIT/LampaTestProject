@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct NewsItem: Decodable {
+struct NewsItem: Codable {
     let name: String
     let link: URL
     let cover: URL?

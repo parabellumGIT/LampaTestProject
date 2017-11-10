@@ -12,6 +12,7 @@ extension WebService{
                           WebService.QueryParameterKeys.NewsCount:"10",
                           WebService.QueryParameterKeys.Sources:"7,19,13,5,15,16,12,9,10012,10010,10013,10014,10019,10018,10011",
                           WebService.QueryParameterKeys.FeedLineID: "5"]
+        
         let _ = taskForGetMethod(parameters: parameters) { (results, error) in
             if let error = error {
                 completionHandler(nil, error)

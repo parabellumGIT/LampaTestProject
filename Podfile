@@ -10,5 +10,6 @@ pod 'ImageSlideshow', '~> 1.4.1'
 pod 'AMScrollingNavbar', '~> 4.0.4'
 pod 'MBProgressHUD', '~> 1.0.0'
 pod 'SDWebImage', '~> 4.1.0'
+pod 'Disk', '~> 0.3.2'
 
 end

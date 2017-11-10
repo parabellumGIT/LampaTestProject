@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9B7BEF22A2D2E5C2E4174836475BC47B'
-               BlueprintName = 'AMScrollingNavbar'
+               BlueprintIdentifier = '1691E754022217B52671D98A23731A08'
+               BlueprintName = 'Disk'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'AMScrollingNavbar.framework'>
+               BuildableName = 'Disk.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
